@@ -3,7 +3,7 @@
 PDF reader based on [MuPDF](http://mupdf.com)
 
 ### Download
-[Download](https://play.google.com/store/apps/details?id=) it at Google Playstore
+[Download](https://play.google.com/store/apps/details?id=com.ibexreader.mibooksi) it at Google Playstore
 
 ### License
     Ibex-PDF reader based on MuPDF 
