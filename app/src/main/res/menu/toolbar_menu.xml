@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/read_noaction"
+          android:title="Reading"
+          android:icon="@drawable/ic_action_book"
+        />
+    <item android:id="@+id/outlineButton"
+          android:title="outline"
+          android:icon="@drawable/ic_list"
+        />
+    <item android:id="@+id/reflowButton"
+          android:title="reflow"
+          android:icon="@drawable/ic_reflow"
+        />
+    <item  android:id="@+id/searchButton"
+           android:title="search"
+           android:icon="@drawable/ic_magnifying_glass"
+        />
+
+    <item   android:id="@+id/underlineButton"
+
+                                   android:title="underline"
+           android:icon="@drawable/ic_underlined"
+        />
+
+    <item  android:id="@+id/strikeOutButton"
+           android:title="@string/strike_out"
+           android:icon="@drawable/ic_strikethrough"
+        />
+
+    <item
+        android:id="@+id/inkButton"
+           android:title="@string/draw_annotation"
+           android:icon="@drawable/ic_pen"
+        />
+    <item
+        android:id="@+id/highlightButton"
+           android:title="@string/highlight"
+           android:icon="@drawable/ic_highlight" />
+
+    </menu>

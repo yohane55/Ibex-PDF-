@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+
+    <TextView
+        android:id="@+id/docNameText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="16dp"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:background="#e2e2e2"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Title"
+        android:paddingTop="3dp"
+        android:paddingBottom="3dp"/>
+
+    <FrameLayout
+        android:id="@+id/reader_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/docNameText">
+
+
+    </FrameLayout>
+    <ViewAnimator
+        android:id="@+id/switcher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/docNameText"
+        android:animateFirstView="false">
+
+        <RelativeLayout
+            android:id="@+id/topBar0Main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/toolbar" >
+
+            <LinearLayout
+                android:id="@+id/lowerButtons"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_gravity="top"
+
+                >
+
+                <SeekBar
+                    android:id="@+id/pageSlider"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="0dp"
+                    android:thumb="@drawable/seek_thumb"
+                    android:progressDrawable="@drawable/seek_progress"
+                    android:paddingLeft="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:layout_weight="1"
+                    android:focusable="true"
+                    android:clickable="true"/>
+
+                <TextView
+                    android:id="@+id/pageNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center"
+                    android:layout_alignParentBottom="false"
+                    android:layout_above="@+id/lowerButtons"
+                    android:layout_marginRight="1dp"
+                    android:layout_weight="0.2"/>
+
+            </LinearLayout>
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/horizontalScrollView"
+                android:layout_centerHorizontal="true"
+                android:scrollbarStyle="insideInset"
+                android:scrollbarSize="2dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/proofButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/cancelMoreButton"
+                        android:contentDescription="@string/proof"
+                        android:background="@drawable/button"
+                        android:onClick="OnProofButtonClick"
+                        android:src="@drawable/ic_proof"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/sepsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_below="@+id/docNameText"
+                        android:layout_alignParentRight="true"
+                        android:contentDescription="Separations"
+                        android:background="@drawable/button"
+                        android:onClick="OnSepsButtonClick"
+                        android:src="@drawable/ic_sep"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/linkButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/reflowButton"
+                        android:contentDescription="@string/toggle_links"
+                        android:background="@drawable/button"
+                        android:src="@drawable/ic_link"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/reflowButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/outlineButton"
+                        android:contentDescription="@string/toggle_reflow_mode"
+                        android:background="@drawable/button"
+                        android:src="@drawable/ic_reflow"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/outlineButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/searchButton"
+                        android:contentDescription="@string/outline_title"
+                        android:background="@drawable/button"
+                        android:src="@drawable/ic_list"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/searchButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@+id/moreButton"
+                        android:contentDescription="@string/search_document"
+                        android:background="@drawable/button"
+                        android:src="@drawable/ic_magnifying_glass"
+                        android:layout_gravity="center_vertical"/>
+
+
+
+                    <ImageButton
+                        android:id="@+id/printButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/proofButton"
+                        android:contentDescription="@string/print"
+                        android:background="@drawable/button"
+                        android:onClick="OnPrintButtonClick"
+                        android:src="@drawable/ic_print"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/copyTextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/copy_text_to_the_clipboard"
+                        android:background="@drawable/button"
+                        android:onClick="OnCopyTextButtonClick"
+                        android:src="@drawable/ic_copy"
+                        android:layout_toRightOf="@+id/printButton"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/underlineButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/copyTextButton"
+                        android:contentDescription="@string/underline"
+                        android:background="@drawable/button"
+                        android:onClick="OnUnderlineButtonClick"
+                        android:src="@drawable/ic_underlined"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/strikeOutButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/underlineButton"
+                        android:contentDescription="@string/strike_out"
+                        android:background="@drawable/button"
+                        android:onClick="OnStrikeOutButtonClick"
+                        android:src="@drawable/ic_strikethrough"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/inkButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:contentDescription="@string/ink"
+                        android:background="@drawable/button"
+                        android:onClick="OnInkButtonClick"
+                        android:src="@drawable/ic_pen"
+                        android:layout_toRightOf="@+id/strikeOutButton"
+                        android:layout_gravity="center_vertical"/>
+
+                    <ImageButton
+                        android:id="@+id/highlightButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@+id/inkButton"
+                        android:contentDescription="@string/highlight"
+                        android:background="@drawable/button"
+                        android:onClick="OnHighlightButtonClick"
+                        android:src="@drawable/ic_highlight"
+                        android:layout_gravity="center_vertical"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/topBar1Search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/toolbar" >
+
+            <ImageButton
+                android:id="@+id/cancelSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="@string/cancel"
+                android:tint="@color/md_blue_700"
+                android:background="@drawable/button"
+                android:onClick="OnCancelSearchButtonClick"
+                android:src="@drawable/ic_cancel" />
+
+            <EditText
+                android:id="@+id/searchText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/cancelSearch"
+                android:layout_toLeftOf="@+id/searchBack"
+                android:inputType="text"
+                android:hint="@string/search"
+
+                android:background="@drawable/search"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:singleLine="true" />
+
+            <ImageButton
+                android:id="@+id/searchBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toLeftOf="@+id/searchForward"
+                android:contentDescription="@string/search_backwards"
+                android:background="@drawable/button"
+                android:tint="@color/md_blue_700"
+
+                android:src="@drawable/ic_arrow_left" />
+
+            <ImageButton
+                android:id="@+id/searchForward"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/search_forwards"
+                android:background="@drawable/button"
+                android:tint="@color/md_blue_700"
+
+                android:src="@drawable/ic_arrow_right" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/topBar5Accept"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/toolbar" >
+
+
+            <TextView
+                android:id="@+id/annotType"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/cancelAcceptButton"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/md_blue_700"
+
+                android:textStyle="bold"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:layout_weight="1"
+                android:layout_gravity="center_vertical"/>
+            <Button
+                android:id="@+id/annotColor"
+                android:background="#ff0000"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="14dp"
+                android:clickable="true"
+                android:layout_toRightOf="@+id/annotType"
+                android:layout_centerVertical="true"
+                android:layout_gravity="center_vertical"/>
+
+
+
+
+            <ImageButton
+                android:id="@+id/acceptButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/accept"
+                android:tint="@color/md_blue_700"
+
+                android:background="@drawable/button"
+                android:onClick="OnAcceptButtonClick"
+                android:src="@drawable/ic_check"
+                android:layout_weight="0.6"
+                android:layout_gravity="center_vertical"/>
+
+            <ImageButton
+                android:id="@+id/cancelAcceptButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="@string/cancel"
+                android:tint="@color/md_blue_700"
+
+                android:background="@drawable/button"
+                android:onClick="OnCancelAcceptButtonClick"
+                android:src="@drawable/ic_cancel"
+                android:layout_weight="0.6"
+                android:layout_gravity="center_vertical"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/topBar3Delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/toolbar" >
+
+            <TextView
+                android:id="@+id/deleteLabel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/cancelDeleteButton"
+                android:layout_toLeftOf="@+id/deleteButton"
+                android:gravity="center"
+                android:singleLine="true"
+                android:textColor="@color/md_blue_700"
+                android:textStyle="bold"
+                android:text="Delete ??"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"/>
+
+            <ImageButton
+                android:id="@+id/deleteButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:contentDescription="@string/delete"
+                android:background="@drawable/button"
+                android:onClick="OnDeleteButtonClick"
+                android:src="@drawable/ic_delete"
+                android:tint="@color/md_blue_700"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"/>
+
+            <ImageButton
+                android:id="@+id/cancelDeleteButton"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:contentDescription="@string/cancel"
+                android:background="@drawable/button"
+                android:onClick="OnCancelDeleteButtonClick"
+                android:src="@drawable/ic_cancel"
+                android:tint="@color/md_blue_700"
+
+                android:layout_gravity="center_vertical"
+                android:layout_weight="0.5"/>
+
+        </LinearLayout>
+
+    </ViewAnimator>
+
+
+
+
+
+    <TextView
+        android:id="@+id/info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/page_num"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#FFFFFF"
+        android:layout_gravity="center"/>
+
+
+
+    <!--</RelativeLayout>-->
+
+
+</RelativeLayout>
